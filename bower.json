@@ -1,0 +1,21 @@
+{
+  "name": "grunt-bootstrap-3",
+  "description": "Bootstrap your grunt and set initial browsersync for project startup",
+  "main": "site/index.html",
+  "authors": [
+    "Nikola Vrhovac <vrllee@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
