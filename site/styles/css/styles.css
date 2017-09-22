@@ -6722,7 +6722,7 @@ button.close {
   }
 }
 body {
-  background-color: #E6E8E6;
+  background-color: #ffffff;
 }
 h1 {
   color: #5F6062;
@@ -6731,6 +6731,7 @@ h1 {
 a {
   color: #0074B7;
 }
-a:hover {
-  color: red;
+.list-group {
+  max-width: 400px;
+  margin: auto;
 }

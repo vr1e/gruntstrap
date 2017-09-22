@@ -46,3 +46,7 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Project dependencies
+site/styles/fonts/**
+site/styles/css/**
