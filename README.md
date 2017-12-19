@@ -10,6 +10,8 @@ Install the dependencies and devDependencies.
 ```sh
 $ cd grunt-bootstrap-3
 $ npm install
+* grunt-contrib-sass task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. On windows you can install Ruby using [rubyinstaller](https://rubyinstaller.org/) When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+
 $ grunt
 ```
 
