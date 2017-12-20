@@ -10,24 +10,14 @@ module.exports = function(grunt) {
 		// 			optimization: 2
 		// 		},
 		// 		files: {
-		// 			"site/styles/css/styles.css": "site/styles/less/styles.less"
+		// 			'site/styles/css/styles.css': 'site/styles/less/styles.less'
 		// 		}
 		// 	}
 		// },
-		sass: {
-			dist: {
-				options: {
-					style: 'expanded'
-				},
-				files: { // Dictionary of files
-					"site/styles/css/styles.css": "site/styles/sass/styles.scss"
-				}
-			}
-		},
 		watch: {
 			styles: {
-				files: ['site/styles/less/**/*.less', 'site/js/custom.js'],
-				tasks: ['less', 'cssmin', 'uglify']
+				files: ['site/styles/sass/**/*.scss', 'site/js/custom.js'],
+				tasks: ['sass', 'cssmin', 'uglify']
 			}
 		},
 		cssmin: {
@@ -62,7 +52,7 @@ module.exports = function(grunt) {
 			options: {
 				watchTask: true,
 				server: {
-					baseDir: "site/"
+					baseDir: 'site/'
 				}
 			}
 		},
@@ -76,19 +66,18 @@ module.exports = function(grunt) {
 					},
 					{
 						expand: true,
-						cwd: 'bower_components/bootstrap/dist/js/',
+						cwd: 'bower_components/bootstrap-sass/assets/javascripts/',
 						src: 'bootstrap.min.js',
 						dest: 'site/lib/js/',
+					}, {
+						expand: true,
+						cwd: 'bower_components/bootstrap-sass/assets/stylesheets/',
+						src: '**',
+						dest: 'site/styles/sass/bootstrap/',
 					},
 					{
 						expand: true,
-						cwd: 'bower_components/bootstrap/dist/css/',
-						src: 'bootstrap.min*',
-						dest: 'site/lib/css/',
-					},
-					{
-						expand: true,
-						cwd: 'bower_components/bootstrap/dist/fonts/',
+						cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/',
 						src: '**',
 						dest: 'site/lib/fonts/',
 					},
@@ -106,9 +95,20 @@ module.exports = function(grunt) {
 					}
 				],
 			}
+		},
+		sass: {
+			dist: {
+				options: {
+					style: 'expanded'
+				},
+				files: { // Dictionary of files
+					'site/styles/sass/_bootstrap.css': 'site/styles/sass/bootstrap/_bootstrap.scss',
+					'site/styles/css/styles.css': 'site/styles/sass/styles.scss'
+				}
+			}
 		}
 	});
-	grunt.registerTask('default', ['sass', 'cssmin', 'uglify', 'copy', 'browserSync', 'watch']);
+	grunt.registerTask('default', ['cssmin', 'uglify', 'copy', 'sass', 'browserSync', 'watch']);
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');

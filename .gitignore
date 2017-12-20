@@ -48,6 +48,8 @@ jspm_packages
 .yarn-integrity
 
 # Project dependencies
-site/styles/fonts/**
+site/lib/
+site/styles/sass/bootstrap
 site/styles/css/**
+site/js/scripts.min.js
 .sass-cache
