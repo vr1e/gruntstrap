@@ -48,6 +48,7 @@ jspm_packages
 .yarn-integrity
 
 # Project dependencies
+dest/
 site/lib/
 site/styles/sass/bootstrap
 site/styles/css/**

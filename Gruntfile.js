@@ -2,57 +2,25 @@
 module.exports = function(grunt) {
 	require('jit-grunt')(grunt);
 	grunt.initConfig({
-		// less: {
-		// 	development: {
-		// 		options: {
-		// 			compress: false,
-		// 			yuicompress: false,
-		// 			optimization: 2
-		// 		},
-		// 		files: {
-		// 			'site/styles/css/styles.css': 'site/styles/less/styles.less'
-		// 		}
-		// 	}
-		// },
+	  	clean: ['dest/*'],
 		watch: {
 			styles: {
-				files: ['site/styles/sass/**/*.scss', 'site/js/custom.js'],
-				tasks: ['sass', 'cssmin', 'uglify']
-			}
-		},
-		cssmin: {
-			target: {
-				files: [{
-					expand: true,
-					cwd: 'site/styles/css',
-					src: ['*.css', '!*.min.css'],
-					dest: 'site/styles/css',
-					ext: '.min.css'
-				}]
-			}
-		},
-		uglify: {
-			options: {
-				mangle: false
-			},
-			my_target: {
-				files: {
-					'site/js/scripts.min.js': ['site/js/custom.js']
-				}
+				files: ['src/styles/sass/*.scss', 'src/js/*.js', 'src/*.html'],
+				tasks: ['sass', 'copy:track']
 			}
 		},
 		browserSync: {
 			bsFiles: {
 				src: [
-					'site/index.html',
-					'site/styles/css/styles.min.css',
-					'site/js/scripts.min.js'
+					'dest/*.html',
+					'dest/styles/styles.css',
+					'dest/js/scripts.js'
 				]
 			},
 			options: {
 				watchTask: true,
 				server: {
-					baseDir: 'site/'
+					baseDir: './dest'
 				}
 			}
 		},
@@ -62,38 +30,69 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'bower_components/jquery/dist/',
 						src: 'jquery.min.js',
-						dest: 'site/lib/js/',
-					},
-					{
+						dest: 'dest/lib/js/',
+					}, {
 						expand: true,
 						cwd: 'bower_components/bootstrap-sass/assets/javascripts/',
 						src: 'bootstrap.min.js',
-						dest: 'site/lib/js/',
+						dest: 'dest/lib/js/',
 					}, {
 						expand: true,
 						cwd: 'bower_components/bootstrap-sass/assets/stylesheets/',
 						src: '**',
-						dest: 'site/styles/sass/bootstrap/',
-					},
-					{
+						dest: 'src/styles/sass/bootstrap/',
+					}, {
 						expand: true,
 						cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/',
 						src: '**',
-						dest: 'site/lib/fonts/',
-					},
-					{
+						dest: 'dest/lib/fonts/',
+					}, {
 						expand: true,
 						cwd: 'bower_components/components-font-awesome/css',
 						src: 'font-awesome.min.css',
-						dest: 'site/lib/css/',
-					},
-					{
+						dest: 'dest/lib/css/',
+					}, {
 						expand: true,
 						cwd: 'bower_components/components-font-awesome/fonts',
 						src: '**',
-						dest: 'site/lib/fonts/',
+						dest: 'dest/lib/fonts/',
+					}, {
+						expand: true,
+						cwd: 'src/',
+						src: '*.html',
+						dest: 'dest/',
+					}, {
+						expand: true,
+						cwd: 'src/images/',
+						src: '**',
+						dest: 'dest/images/',
+					}, {
+						expand: true,
+						cwd: 'src/js/',
+						src: '*.js',
+						dest: 'dest/js/',
+					}, {
+						expand: true,
+						cwd: 'src/images/',
+						src: 'favicon.ico',
+						dest: 'dest/',
 					}
-				],
+				]
+			},
+			track: {
+				files: [
+					{
+						expand: true,
+						cwd: 'src/',
+						src: '*.html',
+						dest: 'dest/',
+					}, {
+						expand: true,
+						cwd: 'src/js/',
+						src: '*.js',
+						dest: 'dest/js/',
+					}
+				]
 			}
 		},
 		sass: {
@@ -102,16 +101,17 @@ module.exports = function(grunt) {
 					style: 'expanded'
 				},
 				files: { // Dictionary of files
-					'site/styles/sass/_bootstrap.css': 'site/styles/sass/bootstrap/_bootstrap.scss',
-					'site/styles/css/styles.css': 'site/styles/sass/styles.scss'
+					'dest/styles/_bootstrap.css': 'src/styles/sass/bootstrap/_bootstrap.scss',
+					'dest/styles/styles.css': 'src/styles/sass/styles.scss'
 				}
 			}
 		}
 	});
-	grunt.registerTask('default', ['cssmin', 'uglify', 'copy', 'sass', 'browserSync', 'watch']);
+	grunt.registerTask('default', ['clean', 'copy', 'sass', 'browserSync', 'watch']);
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 };
