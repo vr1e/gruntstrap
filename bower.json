@@ -3,10 +3,10 @@
   "description": "Bootstrap your grunt and set initial browsersync for project startup",
   "main": "site/index.html",
   "authors": [
-    "Nikola Vrhovac <vrllee@gmail.com>"
+    "Nikola Vrhovac <nikola.vrhovac@gowi.rs>"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/vr1e/gruntstrap",
   "private": true,
   "ignore": [
     "**/.*",
@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "components-font-awesome": "^4.7.0",
     "bootstrap-sass": "^3.3.7"
   }
