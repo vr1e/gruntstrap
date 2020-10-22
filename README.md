@@ -6,11 +6,14 @@ Use this to startup your project with grunt tasks in a couple of seconds.
 
 Requires [Node.js](https://nodejs.org/) to run.
 
-Install the dependencies and devDependencies.
+Install the dependencies.
+
+This repo is slightly old and it still uses [bower](https://github.com/bower/bower).
 
 ```
 
 $ cd project
+$ npm install -g bower
 $ npm install
 
 * grunt-contrib-sass task requires you to have
