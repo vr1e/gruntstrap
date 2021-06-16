@@ -8,7 +8,7 @@ Requires [Node.js](https://nodejs.org/) to run.
 
 Install the dependencies.
 
-This repo is slightly old and it still uses [bower](https://github.com/bower/bower).
+This repo is old and it still uses [bower](https://github.com/bower/bower).
 
 ```
 
